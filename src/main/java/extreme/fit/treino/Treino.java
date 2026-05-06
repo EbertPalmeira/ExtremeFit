@@ -1,18 +1,31 @@
 package extreme.fit.treino;
 
-
+import extreme.fit.professor.Professor;
 import extreme.fit.aluno.Aluno;
 import extreme.fit.exercicio.Exercicio;
-import extreme.fit.professor.Professor;
+
+
+import extreme.fit.professor.ProfessorRepository;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import extreme.fit.professor.Professor;
 
 import java.util.ArrayList;
 import java.util.List;
 
-
+@Getter
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "treino")
+@EqualsAndHashCode(of = "id")
 public class Treino {
+
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -45,6 +58,15 @@ public class Treino {
             inverseJoinColumns = @JoinColumn(name = "exercicio_id")
     )
     private List<Exercicio> exercicios = new ArrayList<>();
+
+    public Treino(DadosCadastroTreino dados, Professor professor) {
+
+        this.nome= dados.nome();
+        this.descricao= dados.descricao();
+        this.duracaoMinutos= dados.duracaoMinutos();
+        this.nivel= dados.nivel();
+        this.professor = professor;
+    }
 
 
 

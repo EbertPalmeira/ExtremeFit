@@ -1,10 +1,7 @@
 package extreme.fit.controller;
 
 
-import extreme.fit.aluno.Aluno;
-import extreme.fit.aluno.AlunoRepository;
-import extreme.fit.aluno.DadosCadastroAluno;
-import extreme.fit.aluno.DadosListagemAluno;
+import extreme.fit.aluno.*;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -32,6 +29,22 @@ public class AlunoController {
 
     }
 
+
+    @PutMapping
+    @Transactional
+    public void atualizar(@RequestBody @Valid DadosAtualizacaoAluno dados) {
+        var aluno = repository.getReferenceById(dados.id());
+        aluno.atualizar(dados);
+    }
+
+
+
+    @DeleteMapping("{id}")
+    @Transactional
+    public void excluir(@PathVariable Long id){
+        var aluno = repository.getReferenceById(id);
+        aluno.excluir();
+    }
 
 
 
