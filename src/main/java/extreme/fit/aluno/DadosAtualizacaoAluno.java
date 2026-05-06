@@ -7,6 +7,7 @@ public record DadosAtualizacaoAluno(
         Long id,
         String nome,
         String email,
-        String telefone
+        String telefone,
+        String dataNascimento
              ) {
 }
