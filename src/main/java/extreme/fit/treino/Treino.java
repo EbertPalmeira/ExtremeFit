@@ -66,6 +66,7 @@ public class Treino {
         this.duracaoMinutos= dados.duracaoMinutos();
         this.nivel= dados.nivel();
         this.professor = professor;
+
     }
 
 

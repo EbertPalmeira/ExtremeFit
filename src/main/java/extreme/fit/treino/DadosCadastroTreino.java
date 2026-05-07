@@ -14,7 +14,9 @@ public record DadosCadastroTreino(
 
         Nivel nivel,
 
-        Long professorId
+        Long professorId,
+
+        Long alunoId
 
 
 
