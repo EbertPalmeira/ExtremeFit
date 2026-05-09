@@ -55,5 +55,12 @@ public class TreinoController {
 
     }
 
+    @DeleteMapping("/{id}")
+    @Transactional
+    public void excluir(@PathVariable Long id){
+       treinoRepository.deleteById(id);
+
+    }
+
 
 }
