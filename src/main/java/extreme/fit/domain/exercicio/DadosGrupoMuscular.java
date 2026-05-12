@@ -1,4 +1,4 @@
-package extreme.fit.exercicio;
+package extreme.fit.domain.exercicio;
 
 public enum DadosGrupoMuscular {
     PEITO,

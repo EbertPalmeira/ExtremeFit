@@ -1,7 +1,7 @@
 package extreme.fit.controller;
 
 
-import extreme.fit.professor.*;
+import extreme.fit.domain.professor.*;
 import jakarta.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;

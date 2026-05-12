@@ -1,4 +1,4 @@
-package extreme.fit.aluno;
+package extreme.fit.domain.aluno;
 
 public record DadosListagemAluno(
 

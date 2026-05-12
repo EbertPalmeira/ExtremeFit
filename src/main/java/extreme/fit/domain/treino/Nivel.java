@@ -1,4 +1,4 @@
-package extreme.fit.treino;
+package extreme.fit.domain.treino;
 
 public enum Nivel {
     INICIANTE,

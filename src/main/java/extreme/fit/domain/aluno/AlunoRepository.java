@@ -1,6 +1,5 @@
-package extreme.fit.aluno;
+package extreme.fit.domain.aluno;
 
-import extreme.fit.professor.Professor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;

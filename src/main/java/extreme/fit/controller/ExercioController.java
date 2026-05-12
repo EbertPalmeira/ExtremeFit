@@ -1,9 +1,9 @@
 package extreme.fit.controller;
 
 
-import extreme.fit.exercicio.DadosCadastroExercicio;
-import extreme.fit.exercicio.Exercicio;
-import extreme.fit.exercicio.ExercicioRepository;
+import extreme.fit.domain.exercicio.DadosCadastroExercicio;
+import extreme.fit.domain.exercicio.Exercicio;
+import extreme.fit.domain.exercicio.ExercicioRepository;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;

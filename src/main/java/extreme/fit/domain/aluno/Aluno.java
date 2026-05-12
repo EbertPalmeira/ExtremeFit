@@ -1,6 +1,6 @@
-package extreme.fit.aluno;
+package extreme.fit.domain.aluno;
 
-import extreme.fit.treino.Treino;
+import extreme.fit.domain.treino.Treino;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;

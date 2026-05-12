@@ -1,4 +1,4 @@
-package extreme.fit.exercicio;
+package extreme.fit.domain.exercicio;
 
 import jakarta.validation.constraints.NotBlank;
 

@@ -1,4 +1,4 @@
-package extreme.fit.aluno;
+package extreme.fit.domain.aluno;
 
 import jakarta.validation.constraints.NotNull;
 

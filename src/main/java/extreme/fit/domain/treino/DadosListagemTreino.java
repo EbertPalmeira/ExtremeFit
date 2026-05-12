@@ -1,4 +1,4 @@
-package extreme.fit.treino;
+package extreme.fit.domain.treino;
 
 public record DadosListagemTreino(Long id,
                                   String nome,

@@ -1,18 +1,15 @@
-package extreme.fit.treino;
+package extreme.fit.domain.treino;
 
-import extreme.fit.professor.Professor;
-import extreme.fit.aluno.Aluno;
-import extreme.fit.exercicio.Exercicio;
+import extreme.fit.domain.professor.Professor;
+import extreme.fit.domain.aluno.Aluno;
+import extreme.fit.domain.exercicio.Exercicio;
 
 
-import extreme.fit.professor.ProfessorRepository;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
-import extreme.fit.professor.Professor;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package extreme.fit.professor;
+package extreme.fit.domain.professor;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

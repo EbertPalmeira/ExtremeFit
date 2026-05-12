@@ -1,7 +1,7 @@
 package extreme.fit.controller;
 
 
-import extreme.fit.aluno.*;
+import extreme.fit.domain.aluno.*;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;

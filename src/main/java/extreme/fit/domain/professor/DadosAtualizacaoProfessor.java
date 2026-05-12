@@ -1,4 +1,4 @@
-package extreme.fit.professor;
+package extreme.fit.domain.professor;
 
 import jakarta.validation.constraints.NotNull;
 

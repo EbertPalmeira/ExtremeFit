@@ -1,7 +1,7 @@
-package extreme.fit.exercicio;
+package extreme.fit.domain.exercicio;
 
 
-import extreme.fit.treino.Treino;
+import extreme.fit.domain.treino.Treino;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;

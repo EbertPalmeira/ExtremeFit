@@ -1,4 +1,4 @@
-package extreme.fit.professor;
+package extreme.fit.domain.professor;
 
 public enum Especialidade {
     MUSCULACAO,

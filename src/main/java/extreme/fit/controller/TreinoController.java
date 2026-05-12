@@ -1,10 +1,10 @@
 package extreme.fit.controller;
-import extreme.fit.exercicio.ExercicioRepository;
-import extreme.fit.professor.ProfessorRepository;
-import extreme.fit.treino.DadosCadastroTreino;
-import extreme.fit.treino.DadosListagemTreino;
-import extreme.fit.treino.Treino;
-import extreme.fit.treino.TreinoRepository;
+import extreme.fit.domain.exercicio.ExercicioRepository;
+import extreme.fit.domain.professor.ProfessorRepository;
+import extreme.fit.domain.treino.DadosCadastroTreino;
+import extreme.fit.domain.treino.DadosListagemTreino;
+import extreme.fit.domain.treino.Treino;
+import extreme.fit.domain.treino.TreinoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
