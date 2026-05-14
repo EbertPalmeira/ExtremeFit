@@ -1,10 +1,7 @@
 package extreme.fit.controller;
 import extreme.fit.domain.exercicio.ExercicioRepository;
 import extreme.fit.domain.professor.ProfessorRepository;
-import extreme.fit.domain.treino.DadosCadastroTreino;
-import extreme.fit.domain.treino.DadosListagemTreino;
-import extreme.fit.domain.treino.Treino;
-import extreme.fit.domain.treino.TreinoRepository;
+import extreme.fit.domain.treino.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -12,6 +9,7 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.util.UriComponentsBuilder;
 
 @RestController
 @RequestMapping("treino")
@@ -38,7 +36,7 @@ public class TreinoController {
 
     @PostMapping("/{treinoId}/exercicios/{exercicioId}")
     @Transactional
-    public void cadastrarExercicio(@PathVariable Long treinoId, @PathVariable Long exercicioId) {
+    public ResponseEntity cadastrarExercicio(@PathVariable Long treinoId, @PathVariable Long exercicioId , UriComponentsBuilder uriBuilder) {
         var treino = treinoRepository.findById(treinoId)
                 .orElseThrow(() -> new RuntimeException("Treino não encontrado"));;
 
@@ -46,6 +44,9 @@ public class TreinoController {
 
         treino.getExercicios().add(exercicio);
         treinoRepository.save(treino);
+
+        var uri =  uriBuilder.path("/treino/{treinoId}/exercicios/{exercicioId}").buildAndExpand(treinoId, exercicioId).toUri();
+        return ResponseEntity.created(uri).body(new DadosDetalhamentoTreino(treino));
 
     }
 
