@@ -1,4 +1,4 @@
-package extreme.fit.infra;
+package extreme.fit.infra.exception;
 
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.http.ResponseEntity;
