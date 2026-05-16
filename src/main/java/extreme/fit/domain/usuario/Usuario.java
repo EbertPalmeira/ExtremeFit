@@ -25,4 +25,8 @@ public class Usuario {
     private String senha;
 
 
+    public Usuario(String login, String senhaCriptografada) {
+        this.login = login;
+        this.senha = senhaCriptografada;
+    }
 }
