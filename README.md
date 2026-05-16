@@ -47,8 +47,4 @@ API REST para gerenciamento de academia com cadastro de alunos, professores, tre
 # Clonar o projeto
 git clone https://github.com/seu-usuario/extreme-fit.git
 
-# Configurar banco PostgreSQL
-# Criar banco de dados: extreme_fit
 
-# Rodar a aplicação
-mvn spring-boot:run
