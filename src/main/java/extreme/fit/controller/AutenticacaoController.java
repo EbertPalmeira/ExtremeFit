@@ -1,7 +1,9 @@
 package extreme.fit.controller;
 
 import extreme.fit.domain.usuario.DadosAutenticacao;
+import extreme.fit.domain.usuario.Usuario;
 import extreme.fit.domain.usuario.UsuarioRepository;
+import extreme.fit.infra.security.TokenService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -21,6 +23,8 @@ public class AutenticacaoController {
 
     @Autowired
     private AuthenticationManager manager;
+    @Autowired
+    private TokenService tokenService;
 
     @PostMapping
     public ResponseEntity efetuarLogin(@RequestBody @Valid DadosAutenticacao dados) {
@@ -31,7 +35,7 @@ public class AutenticacaoController {
 
         System.out.println("Autenticação bem-sucedida: " + authentication.isAuthenticated());
 
-        return ResponseEntity.ok("Login realizado com sucesso!");
+        return ResponseEntity.ok(tokenService.gerarToken((Usuario) authentication.getPrincipal()));
     }
 
 
