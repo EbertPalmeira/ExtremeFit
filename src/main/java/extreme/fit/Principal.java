@@ -4,8 +4,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class FitApplication {
+public class Principal {
 	public static void main(String[] args) {
-		SpringApplication.run(FitApplication.class, args);
+		SpringApplication.run(Principal.class, args);
 	}
 }

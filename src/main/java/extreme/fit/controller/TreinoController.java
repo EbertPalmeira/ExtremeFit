@@ -1,4 +1,5 @@
 package extreme.fit.controller;
+import extreme.fit.domain.aluno.AlunoRepository;
 import extreme.fit.domain.exercicio.ExercicioRepository;
 import extreme.fit.domain.professor.ProfessorRepository;
 import extreme.fit.domain.treino.*;
@@ -24,13 +25,18 @@ public class TreinoController {
     @Autowired
     private ExercicioRepository exercicioRepository;
 
+    @Autowired
+    AlunoRepository alunoRepository;
+
     @PostMapping
     @Transactional
     public void cadastrar(@RequestBody DadosCadastroTreino dados) {
         var professor = professorRepository.findById(dados.professorId())
                 .orElseThrow(() -> new RuntimeException("Professor não encontrado"));
+        var aluno = alunoRepository.findById(dados.alunoId()) // ← buscar aluno
+                .orElseThrow(() -> new RuntimeException("Aluno não encontrado"));
 
-        var treino = new Treino(dados, professor);
+        var treino = new Treino(dados, professor ,aluno);
         treinoRepository.save(treino);
     }
 

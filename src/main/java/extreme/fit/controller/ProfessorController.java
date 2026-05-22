@@ -24,7 +24,7 @@ public class ProfessorController {
     @PostMapping
     @Transactional
     public ResponseEntity cadastrar(@RequestBody @Valid DadosCadastroProfessor dados, UriComponentsBuilder uriBuilder) {
-        var professor = new Professor();
+        var professor = new Professor(dados);
         repository.save(professor);
 
         var uri = uriBuilder.path("professor/{id}").buildAndExpand(professor.getId()).toUri();

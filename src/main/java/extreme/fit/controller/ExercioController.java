@@ -23,7 +23,7 @@ public class ExercioController {
 
     @PostMapping
     public ResponseEntity cadastrar(@RequestBody @Valid DadosCadastroExercicio dados, UriComponentsBuilder uriBuilder) {
-        var exercicio = new Exercicio();
+        var exercicio = new Exercicio(dados);
         repository.save(exercicio);
         var uri= uriBuilder.path("/exercicio/{id}").buildAndExpand(exercicio.getId()).toUri();
         return ResponseEntity.created(uri).body(new DadosDetalhamentoExercicio(exercicio));

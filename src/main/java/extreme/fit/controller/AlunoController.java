@@ -23,7 +23,7 @@ public class AlunoController {
     @PostMapping
     @Transactional
     public ResponseEntity cadastrar(@RequestBody @Valid DadosCadastroAluno dados ,UriComponentsBuilder uriBuilder) {
-        var aluno = new Aluno();
+        var aluno = new Aluno(dados);
         repository.save(aluno);
         var uri = uriBuilder.path("aluno/{id}").buildAndExpand(aluno.getId()).toUri();
         return ResponseEntity.created(uri).body(new DadosDetalhamentoAluno(aluno));
