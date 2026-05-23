@@ -2,6 +2,7 @@ package extreme.fit.controller;
 
 import extreme.fit.domain.usuario.DadosAutenticacao;
 
+import extreme.fit.domain.usuario.Usuario;
 import extreme.fit.domain.usuario.UsuarioRepository;
 import extreme.fit.infra.security.DadosTokenJWT;
 import extreme.fit.infra.security.TokenService;
@@ -17,9 +18,6 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/login")
 public class AutenticacaoController {
 
-    @Autowired
-    private UsuarioRepository repository;
-
 
 
     @Autowired
@@ -34,10 +32,8 @@ public class AutenticacaoController {
         var authenticationToken = new UsernamePasswordAuthenticationToken(dados.login(), dados.senha());
         var authentication = manager.authenticate(authenticationToken);
 
-        var usuario = repository.findByLogin(dados.login())
-                .orElseThrow(() -> new RuntimeException("Usuário não encontrado"));
 
-        var tokenJWT = tokenService.gerarToken(usuario);
+        var tokenJWT = tokenService.gerarToken((Usuario) authentication.getPrincipal());
 
         return ResponseEntity.ok(new DadosTokenJWT(tokenJWT));
     }
