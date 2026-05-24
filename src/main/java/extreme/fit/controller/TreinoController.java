@@ -3,6 +3,7 @@ import extreme.fit.domain.aluno.AlunoRepository;
 import extreme.fit.domain.exercicio.ExercicioRepository;
 import extreme.fit.domain.professor.ProfessorRepository;
 import extreme.fit.domain.treino.*;
+import extreme.fit.service.TreinoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -26,18 +27,19 @@ public class TreinoController {
     private ExercicioRepository exercicioRepository;
 
     @Autowired
-    AlunoRepository alunoRepository;
+    TreinoService  treinoService;
 
     @PostMapping
     @Transactional
-    public void cadastrar(@RequestBody DadosCadastroTreino dados) {
-        var professor = professorRepository.findById(dados.professorId())
-                .orElseThrow(() -> new RuntimeException("Professor não encontrado"));
-        var aluno = alunoRepository.findById(dados.alunoId()) // ← buscar aluno
-                .orElseThrow(() -> new RuntimeException("Aluno não encontrado"));
+    public ResponseEntity cadastrar(@RequestBody DadosCadastroTreino dados,
+                                    UriComponentsBuilder uriBuilder) {
+        var treino = treinoService.cadastrar(dados);
 
-        var treino = new Treino(dados, professor ,aluno);
-        treinoRepository.save(treino);
+        var uri = uriBuilder.path("/treino/{id}")
+                .buildAndExpand(treino.getId())
+                .toUri();
+
+        return ResponseEntity.created(uri).body(new DadosDetalhamentoTreino(treino));
     }
 
     @PostMapping("/{treinoId}/exercicios/{exercicioId}")
