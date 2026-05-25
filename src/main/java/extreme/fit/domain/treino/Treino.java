@@ -48,7 +48,7 @@ public class Treino {
     @JoinColumn(name = "aluno_id")
     private Aluno aluno;
 
-    @ManyToMany
+    @ManyToMany(fetch =  FetchType.LAZY)
     @JoinTable(
             name = "treino_exercicio",
             joinColumns = @JoinColumn(name = "treino_id"),
