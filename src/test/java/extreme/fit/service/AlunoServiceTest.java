@@ -11,6 +11,7 @@ import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 
 import java.util.List;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
@@ -30,7 +31,7 @@ class AlunoServiceTest {
     private DadosCadastroAluno dto;
 
 
-    private DadosListagemAluno dtoListagem;
+
 
     @Test
     void deveriaCadastrarAluno() {
@@ -104,17 +105,20 @@ class AlunoServiceTest {
 
     @Test
     void deveriaExcluir(){
-
-
         //arrange
-
-
+        var dadosCadastro = new DadosCadastroAluno("ebert", "12133",
+                "123@GM", "64023I9329","28/04/2001");
+        var aluno = new Aluno(dadosCadastro);
+        aluno.setId(1L);
+        when(repository.findById(1L)).thenReturn(Optional.of(aluno));
 
         // act
-
+        service.excluir(1L);
 
 
         //assert
+        verify(repository, times(1)).findById(1L);
+        verify(repository, times(1)).save(any(Aluno.class));
     }
 
 }

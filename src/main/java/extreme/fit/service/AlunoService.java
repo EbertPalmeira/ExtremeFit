@@ -38,7 +38,10 @@ public class AlunoService {
     }
 
     public void excluir(Long id){
-        var aluno = repository.getReferenceById(id);
+        var aluno = repository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Aluno não encontrado"));
+
         aluno.excluir();
+        repository.save(aluno);
     }
 }

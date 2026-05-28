@@ -22,12 +22,13 @@ public class ProfessorService {
     public Professor atualizar(DadosAtualizacaoProfessor dados) {
         var professor = repository.getReferenceById(dados.id());
         professor.atualizar(dados);
-        return professor;
+        return repository.save(professor);
     }
 
     public Page<DadosListagemProfessor> listar(Pageable paginacao) {
         var page= repository.findAllByAtivoTrue(paginacao).map(DadosListagemProfessor::new);
         return page ;
+
     }
 
     public Professor excluir(Long id) {
@@ -39,4 +40,6 @@ public class ProfessorService {
         var professor = repository.getReferenceById(id);
         return professor;
     }
+
+
 }
