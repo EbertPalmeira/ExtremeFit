@@ -34,7 +34,7 @@ public class AlunoService {
         var aluno = repository.getReferenceById(dados.id());
         aluno.atualizar(dados);
 
-        return aluno;
+        return repository.save(aluno);
     }
 
     public void excluir(Long id){
