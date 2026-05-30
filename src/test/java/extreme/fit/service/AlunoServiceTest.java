@@ -104,7 +104,7 @@ class AlunoServiceTest {
     }
 
     @Test
-    void deveriaExcluir(){
+    void deveriaExcluirAluno(){
         //arrange
         var dadosCadastro = new DadosCadastroAluno("ebert", "12133",
                 "123@GM", "64023I9329","28/04/2001");

@@ -32,8 +32,10 @@ public class ProfessorService {
     }
 
     public Professor excluir(Long id) {
-        var professor = repository.getReferenceById(id);
-        return  professor;
+        var professor = repository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Aluno não encontrado"));;
+        professor.excluir();
+        return repository.save(professor);
     }
 
     public Professor detalhar(Long id) {

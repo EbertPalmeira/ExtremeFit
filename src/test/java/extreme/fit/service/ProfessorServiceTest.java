@@ -1,6 +1,7 @@
 package extreme.fit.service;
 
 import extreme.fit.domain.aluno.Aluno;
+import extreme.fit.domain.aluno.DadosCadastroAluno;
 import extreme.fit.domain.professor.*;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -83,6 +84,8 @@ class ProfessorServiceTest {
     @Test
     void deveriaListarProfessores() {
 
+
+        //arrange
         var dadosProfessor = new DadosCadastroProfessor("lucas", "lucas@gmail.com",
                 "2311312", Especialidade.MUSCULACAO);
 
@@ -102,5 +105,24 @@ class ProfessorServiceTest {
         assertEquals(1,resultado.getTotalElements());
         Mockito.verify(repository, times(1)).findAllByAtivoTrue(any(Pageable.class));
 
+    }
+
+    @Test
+    void deveriaExcluirProfessor(){
+        //arrange
+        var dadosCadastro = new DadosCadastroProfessor("ebert", "12133",
+                "123@GM", Especialidade.MUSCULACAO);
+
+        var professor = new Professor(dadosCadastro);
+        professor.setId(1L);
+        when(repository.findById(1L)).thenReturn(Optional.of(professor));
+
+        // act
+        service.excluir(1L);
+
+
+        //assert
+        verify(repository, times(1)).findById(1L);
+        verify(repository, times(1)).save(any(Professor.class));
     }
 }
