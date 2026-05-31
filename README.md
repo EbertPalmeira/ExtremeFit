@@ -22,7 +22,8 @@ API REST para gerenciamento de academia com cadastro de alunos, professores, tre
 - ✅ Relacionamentos (OneToMany, ManyToMany)
 - ✅ Soft delete (exclusão lógica)
 - ✅ Paginação e ordenação
-- ✅ Autenticação com JWT (em desenvolvimento)
+- ✅ Autenticação com JWT 
+- ✅ Testes unitários com JUnit e Mockito (Service e Controller)
 
 ## 🔗 Endpoints
 
@@ -45,6 +46,6 @@ API REST para gerenciamento de academia com cadastro de alunos, professores, tre
 
 ```bash
 # Clonar o projeto
-git clone https://github.com/seu-usuario/extreme-fit.git
+git clone https://github.com/EbertPalmeira/extreme-fit.git
 
 
