@@ -12,7 +12,7 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 
 @SpringBootTest
 @AutoConfigureMockMvc(addFilters = false)
@@ -42,5 +42,71 @@ class AlunoControllerTest {
 
       assertThat(response.getStatus()).isEqualTo(HttpStatus.CREATED.value());
     }
+
+    @Test
+    @WithMockUser
+    void deveriaDevolverCodigo200AoListarAlunos() throws Exception {
+        var response = mvc.perform(
+                get("/aluno")
+        ).andReturn().getResponse();
+
+        assertThat(response.getStatus()).isEqualTo(HttpStatus.OK.value());
+
+
+    }
+
+    @Test
+    @WithMockUser
+    void deveriaDevolverCodigo200AoAtualizarAluno() throws Exception {
+        String json = """
+                {
+                        "id":1,
+                        "nome": "ebert",
+                        "matricula": "212121212",
+                        "email": "ebert@123.com",
+                        "telefone": "64981476764",
+                        "dataNascimento": "28/04/2001"
+                }
+                """;
+
+
+        var response = mvc.perform(
+                put("/aluno")
+                        .content(json)
+                        .contentType(MediaType.APPLICATION_JSON)
+        ).andReturn().getResponse();
+
+        assertThat(response.getStatus()).isEqualTo(HttpStatus.OK.value());
+
+
+    }
+    @Test
+    @WithMockUser
+    void deveriaDevolverCodigo204AoExcluirAluno() throws Exception {
+        String json = """
+                {
+                        "id":"1",
+                        "nome": "ebert",
+                        "matricula": "212121212",
+                        "email": "ebert@123.com",
+                        "telefone": "64981476764",
+                        "dataNascimento": "28/04/2001"
+                }
+                """;
+
+
+        var response = mvc.perform(
+                delete("/aluno/{id}",1)
+                        .content(json)
+                        .contentType(MediaType.APPLICATION_JSON)
+        ).andReturn().getResponse();
+
+        assertThat(response.getStatus()).isEqualTo(HttpStatus.NO_CONTENT.value());
+
+
+    }
+
+
+
 
 }
