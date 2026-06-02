@@ -74,4 +74,8 @@ public class Professor {
 
     public void setId(long Id) {
     }
+
+    public void setNome(String professorJoão) {
+
+    }
 }
