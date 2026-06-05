@@ -28,7 +28,7 @@ class ProfessorControllerTest {
     void deveriaDevolverCodigo200ParaCadastroDeProfessor() throws Exception {
         String json = """
                 {
-                        "
+                        
                 }
                 """;
 
