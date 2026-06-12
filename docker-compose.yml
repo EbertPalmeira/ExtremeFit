@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:15
+    container_name: extremefit-db
+    environment:
+      POSTGRES_DB: extreme_fit
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: ebert123
+    ports:
+      - "5432:5432"
+
+  api:
+    image: extremefit
+    container_name: extremefit-api
+    depends_on:
+      - db
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/extreme_fit
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: ebert123
+      JWT_SECRET: 12345678
+    ports:
+      - "8080:8080"
