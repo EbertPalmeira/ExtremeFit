@@ -4,6 +4,8 @@ import extreme.fit.domain.exercicio.ExercicioRepository;
 import extreme.fit.domain.professor.ProfessorRepository;
 import extreme.fit.domain.treino.*;
 import extreme.fit.service.TreinoService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -15,6 +17,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 @RestController
 @RequestMapping("treino")
+ @SecurityRequirement(name = "bearer-key")
 public class TreinoController {
 
     @Autowired

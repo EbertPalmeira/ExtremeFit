@@ -5,6 +5,8 @@ import extreme.fit.domain.exercicio.DadosCadastroExercicio;
 import extreme.fit.domain.exercicio.DadosDetalhamentoExercicio;
 import extreme.fit.domain.exercicio.Exercicio;
 import extreme.fit.domain.exercicio.ExercicioRepository;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -16,6 +18,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 @RestController
 @RequestMapping("exercicio")
+@SecurityRequirement(name = "bearer-key")
 public class ExercioController {
 
     @Autowired

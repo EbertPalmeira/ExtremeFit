@@ -3,6 +3,8 @@ package extreme.fit.controller;
 
 import extreme.fit.domain.aluno.*;
 import extreme.fit.service.AlunoService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -15,6 +17,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 @RestController
 @RequestMapping("aluno")
+@SecurityRequirement(name = "bearer-key")
 public class AlunoController {
 
     @Autowired
